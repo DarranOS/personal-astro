@@ -1,0 +1,15 @@
+---
+import Main from "../layouts/Main.astro";
+---
+
+<link rel="stylesheet" href="/css.css" />
+
+<Main>
+    <div id="scene-3d"></div>
+  <script is:inline src="/js.js"></script>
+  <script is:inline>
+    // any init code that depends on the global the lib exposes
+    window.MyWidget?.init("#scene-3d");
+  </script>
+
+</Main>

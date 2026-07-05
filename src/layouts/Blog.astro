@@ -1,0 +1,37 @@
+---
+import Main from "./Main.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  subtitle: string;
+  poster: string;
+}>;
+
+const { title, subtitle, poster } = Astro.props.frontmatter;
+---
+
+<Main title={title}>
+  <div class="blog-layout">
+    <figure class="figure">
+      <img
+        src={poster}
+        alt={title}
+        width="100%"
+        class="figure__image"
+        transition:name="hero"
+      />
+      <figcaption>
+        Poster Image for {title.toLowerCase()}
+      </figcaption>
+    </figure>
+    <h1 transition:animate="fade" transition:name="title">{title}</h1>
+    <h2>{subtitle}</h2>
+    <slot />
+  </div>
+
+  <style>
+    .blog-layout {
+    }
+  </style>
+</Main>

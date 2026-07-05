@@ -1,0 +1,133 @@
+<section>
+  <h3>Hi, I'm Darran</h3>
+
+  <div class="grid">
+    <div>
+      <p>
+        I used to be the operations manager for a small chain of independent
+        bars and restaurants. In addition to the dayjob, I built Wordpress sites
+        as a fun <em><span>hobby/side-hustle</span></em> to indulge my passion for
+        design.
+      </p><p>
+        I always wanted to learn more, but the 60+ hours/week dayjob didn't
+        leave a lot of time to study beyond HTML and CSS.
+      </p><p>
+        And then the lockdowns started. Instead of baking Banana Bread, I kept
+        sane with Youtube Javascript tutorials. I came across The Odin Project,
+        a free structured online course, and got addicted.
+      </p><a href="https://www.theodinproject.com/about"
+        >About The Odin Project</a
+      ><p>
+        While furloughed, I found myself excitedly coding 10+ hours a day and
+        knew it was decision time! So.....<span
+          >I took the plunge and left hospitality.</span
+        >
+      </p><p>
+        It’s been an exhilarating year, but I'm feeling psyched to start my <em
+          ><span> fullstack dev</span></em
+        > career.
+      </p><a href="https://github.com/DarranOS">github.com/DarranOS</a>
+      <a class="button" href="/DarranO'SheaResume.pdf" download=""
+        ><div color="white">Download my CV &gt;</div></a
+      >
+    </div>
+
+    <div class="image-container">
+      <img src="/images/darran-o-shea.jpg" alt="" />
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    width: 100%;
+
+    padding-inline: calc((100vw - 1500px) / 2);
+  }
+  h3 {
+    background-image: linear-gradient(
+      to right,
+      rgb(254, 201, 34),
+      rgb(254, 150, 34)
+    );
+    background-clip: text;
+    color: transparent;
+    text-align: left;
+    padding-right: 15%;
+  }
+
+  p {
+    color: var(--grey-800);
+    line-height: 2.8;
+    max-width: 75ch;
+    font-size: 1.3rem;
+
+    @media (min-width: 1200px) {
+      p {
+        line-height: 2;
+      }
+
+      p:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+  }
+
+  img {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 1.5rem 4rem;
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  .image-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    outline-offset: 2rem;
+    outline: rgb(254, 150, 34) solid 0.3rem;
+    display: grid;
+    -webkit-box-pack: end;
+    transition: 0.2s ease-in;
+
+    &:hover {
+      outline-offset: 1.5rem;
+      outline: rgb(254, 201, 34) solid 0.3rem;
+    }
+  }
+
+  .button {
+    font-size: 1.6rem;
+    color: white;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+    background-image: linear-gradient(
+      120deg,
+      rgb(0, 115, 255) 0%,
+      rgb(0, 115, 255) 50%,
+      white 50%
+    );
+    background-size: 240%;
+
+    &:hover {
+      color: rgb(0, 115, 255);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1rem 2rem;
+      transform: translateY(-3px);
+      background-position: 100% center;
+      border-color: rgb(0, 115, 255);
+    }
+  }
+</style>

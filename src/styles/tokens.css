@@ -1,0 +1,70 @@
+:root {
+  /* ---- Base surface & text ---- */
+  --color-bg: #faf6f0; /* warm off-white */
+  --color-bg-raised: #f2ece3; /* slightly deeper, for cards/rows */
+  --color-text: #2a2521; /* dark, not black */
+  --color-text-muted: #6b6258; /* secondary copy, labels */
+  --color-border: #e4dbcc; /* hairlines, dividers */
+
+  /* ---- Primary accent ---- */
+  --color-accent: #c1694a; /* muted terracotta */
+  --color-accent-hover: #a8563a;
+  --color-accent-tint: #f3dfd5; /* terracotta at low saturation, for backgrounds */
+
+  /* ---- Pastel family (category tags, topic tags, small UI moments) ----
+     Each has a paired -bg (light) and -text (readable on that bg). */
+  --color-clay-bg: #efd9c9;
+  --color-clay-text: #6b4530;
+  --color-sage-bg: #dce3d2;
+  --color-sage-text: #47543a;
+  --color-dustyblue-bg: #d8e3e8;
+  --color-dustyblue-text: #3e5a63;
+  --color-mauve-bg: #e6d9e4;
+  --color-mauve-text: #5c4359;
+  --color-sand-bg: #eee4c9;
+  --color-sand-text: #6b5a2e;
+  --color-rosewood-bg: #e9d6d6;
+  --color-rosewood-text: #6b3e3e;
+
+  /* ---- Type ---- */
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-hero: clamp(2.75rem, 6vw + 1rem, 5.5rem);
+
+  --line-height-tight: 1.15;
+  --line-height-body: 1.6;
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---- Misc ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --focus-ring: 0 0 0 3px var(--color-accent-tint);
+}
+
+/* Optional dark mode — swap the base surface/text, keep pastels muted */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1e1b18;
+    --color-bg-raised: #262220;
+    --color-text: #efe8df;
+    --color-text-muted: #a69c90;
+    --color-border: #3a342e;
+    --color-accent-tint: #4a332b;
+  }
+}

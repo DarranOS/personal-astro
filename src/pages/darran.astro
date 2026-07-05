@@ -1,0 +1,65 @@
+---
+import Main from "../layouts/Main.astro";
+---
+
+<Main title="Darran">
+  <div class="profile">
+    <div class="profile-inner">
+      <h1>Home</h1>
+      Hi, I'm Darran
+
+      <p>
+        I used to be the operations manager for a small chain of independent
+        bars and restaurants. In addition to the dayjob, I built Wordpress sites
+        as a fun hobby/side-hustle to indulge my passion for design.
+      </p>
+
+      <p>
+        I always wanted to learn more, but the 60+ hours/week dayjob didn't
+        leave a lot of time to study beyond HTML and CSS.
+      </p>
+
+      <p>
+        And then the lockdowns started. Instead of baking Banana Bread, I kept
+        sane with Youtube Javascript tutorials. I came across The Odin Project,
+        a free structured online course, and got addicted.
+      </p>
+
+      <p>
+        About The Odin Project While furloughed, I found myself excitedly coding
+        10+ hours a day and knew it was decision time! So.....<strong
+          >I took the plunge and left hospitality.</strong
+        >
+      </p>
+
+      <p>
+        It’s been an exhilarating year, but I'm feeling psyched to start my
+        fullstack dev career.
+      </p>
+
+      <p><a href="https://github.com/DarranOS">github.com/DarranOS</a></p>
+      <button>Click me</button>
+    </div>
+    <img src="darran-o-shea.jpg" alt="" />
+  </div>
+
+  <style>
+    .profile {
+      display: grid;
+      grid-template-columns: var(--measure) 1fr;
+      gap: 2rem;
+      align-items: center;
+
+      margin: 0 auto;
+      padding: 2rem;
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+    .profile img {
+      border-radius: 50%;
+      outline: 1px solid orange;
+      outline-offset: 5px;
+      width: 100%;
+    }
+  </style>
+</Main>

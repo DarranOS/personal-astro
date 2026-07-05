@@ -1,0 +1,243 @@
+---
+// src/pages/index.astro
+// Placeholder data — will move to content collections once Work/Notes are wired up.
+
+import Main from "../layouts/Main.astro";
+
+import { Camera } from "@lucide/astro";
+
+const proofPoints = [
+  { value: "350+", label: "projects delivered annually" },
+  { value: "41%", label: "team output increase from AI adoption" },
+  { value: "20%", label: "reduction in project timelines" },
+  { value: "90+", label: "projects shipped as a developer" },
+];
+
+const selectedWork = [
+  {
+    category: "Delivery",
+    title: "Rolling out AI-augmented delivery at Jarilo",
+    description:
+      "How a 41% output increase actually happened, process by process.",
+    href: "/work/ai-adoption-rollout",
+    thumbnail: "/images/darran-o-shea.jpg",
+  },
+  {
+    category: "Product",
+    title: "An internal tool for tracking delivery health",
+    description: "Built to replace a spreadsheet nobody trusted anymore.",
+    href: "/work/internal-product",
+    thumbnail: "/images/darran-o-shea.jpg",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    thumbnail: "/images/darran-o-shea.jpg",
+  },
+];
+
+const recentNotes = [
+  {
+    title: "What 'AI-augmented' actually means on a delivery team",
+    tags: ["AI", "delivery"],
+    preview: "Not less work — different work, and a different bottleneck.",
+    href: "/notes/ai-augmented-delivery",
+  },
+  {
+    title:
+      "Running 50-person shifts taught me more about delivery than sprints did",
+    tags: ["process", "career"],
+    preview:
+      "Hospitality operations and software delivery rhyme more than people expect.",
+    href: "/notes/hospitality-and-delivery",
+  },
+  {
+    title: "A small Three.js scene, annotated",
+    tags: ["three.js", "code"],
+    preview: "Walking through the instancing trick that made this fast.",
+    href: "/notes/threejs-instancing-annotated",
+  },
+];
+---
+
+<Main title="New">
+  <select>
+    <button><selectedcontent></selectedcontent></button>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+  <!-- Hero -->
+
+  <a class="icon-container" href="/">
+    <Camera color="var(--color-sage-text)" size={48} stroke-width={1} />
+  </a>
+
+  <section class="hero" aria-labelledby="hero-name">
+    <h1 id="hero-name" class="hero__name light-heading">Darran O'Shea</h1>
+    <h1 id="hero-name" class="hero__name">Darran O'Shea</h1>
+    <p class="hero__positioning">
+      Technical delivery lead at Jarilo Design. Self-taught, hospitality-raised,
+      still ships code.
+    </p>
+    <p class="hero__focus">
+      Currently shipping 350+ projects a year and figuring out what AI-augmented
+      delivery actually looks like in practice.
+    </p>
+  </section>
+
+  <!-- Proof strip -->
+  <section class="proof-strip" aria-label="Key metrics">
+    <ul class="proof-strip__list">
+      {
+        proofPoints.map((point) => (
+          <li class="proof-strip__item">
+            <span class="proof-strip__value">{point.value}</span>
+            <span class="proof-strip__label">{point.label}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Selected Work -->
+  <section class="work-preview" aria-labelledby="work-heading">
+    <h2 id="work-heading" class="section-heading">Selected work</h2>
+    <ul class="work-preview__list">
+      {
+        selectedWork.map((item) => (
+          <li class="work-preview__item">
+            <a href={item.href} class="work-preview__link">
+              {item.thumbnail && (
+                <img
+                  src={item.thumbnail}
+                  alt=""
+                  class="work-preview__thumbnail"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                />
+              )}
+              <div class="work-preview__meta">
+                <span class="work-preview__category">{item.category}</span>
+                <span class="work-preview__title">{item.title}</span>
+                <span class="work-preview__description">
+                  {item.description}
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- About preview -->
+  <section class="about-preview" aria-labelledby="about-heading">
+    <h2 id="about-heading" class="section-heading">About</h2>
+    <p>
+      I spent a decade in hospitality before I touched a line of code — running
+      bars and restaurants, managing teams of fifty or more, learning the hard
+      way what it takes to keep a complex operation running under pressure.
+    </p>
+    <p>
+      I taught myself to code during lockdown, joined Jarilo Design as a
+      developer in 2022, and was promoted to Technical Operations Lead in 2024.
+      I now oversee delivery across design, development, QA, account management,
+      and consultancy — 350+ projects a year.
+    </p>
+    <p>
+      These days I'm most interested in what AI-augmented delivery actually
+      looks like in practice, not in theory — and in staying close enough to the
+      code to keep that opinion honest.
+    </p>
+    <a href="/about" class="about-preview__link">More about me →</a>
+  </section>
+
+  <!-- Notes preview -->
+  <section class="notes-preview" aria-labelledby="notes-heading">
+    <h2 id="notes-heading" class="section-heading">Notes</h2>
+    <p class="notes-preview__intro">
+      A public notebook — thoughts, hacks and lessons, primarily for myself.
+    </p>
+    <ul class="notes-preview__list">
+      {
+        recentNotes.map((note) => (
+          <li class="notes-preview__item">
+            <a href={note.href} class="notes-preview__link">
+              <span class="notes-preview__title">{note.title}</span>
+              <span class="notes-preview__tags">
+                {note.tags.map((tag) => (
+                  <span class="notes-preview__tag">{tag}</span>
+                ))}
+              </span>
+              <span class="notes-preview__preview">{note.preview}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/notes" class="notes-preview__link-all">All notes →</a>
+  </section>
+</Main>
+
+<style>
+  .work-preview {
+    container-type: inline-size;
+  }
+
+  .work-preview__list {
+    display: flex;
+    gap: 1.25rem;
+
+    flex-direction: column;
+
+    @container (width > 80ch) {
+      flex-direction: row;
+    }
+
+    & .work-preview__item {
+      background: var(--surface);
+      border-radius: 0.5rem;
+      gap: 400px;
+      overflow: hidden;
+    }
+
+    & .work-preview__meta {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      padding-block-start: 0.5rem;
+      gap: 0.25rem;
+    }
+    & .work-preview__category {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--grey-600);
+    }
+    & .work-preview__title {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--grey-900);
+    }
+    & .work-preview__description {
+      display: block;
+      font-size: 1rem;
+      color: var(--grey-400);
+    }
+
+    & img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 3 / 2;
+    }
+  }
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-sage-bg);
+    width: fit-content;
+  }
+</style>

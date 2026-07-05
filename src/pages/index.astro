@@ -1,11 +1,169 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Main from "../layouts/Main.astro";
+import Hero from "../components/Hero.astro";
+import Cards from "../components/Cards.astro";
+import Skills from "../components/Skills.astro";
+import Me from "../components/Me.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Main title="Darran O'Shea">
+  <section>
+    <h1>Darran O'Shea</h1>
+    <p>
+      Technical delivery lead at Jarilo Design. Self-taught, hospitality-raised,
+      still ships code.
+    </p>
+    <p>
+      Currently shipping 350+ projects a year and figuring out what AI-augmented
+      delivery actually looks like in practice.
+    </p>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        <span>350+</span>
+        <span>projects delivered annually</span>
+      </li>
+      <li>
+        <span>41%</span>
+        <span>increase in team output from AI adoption</span>
+      </li>
+      <li>
+        <span>20%</span>
+        <span>reduction in project timelines</span>
+      </li>
+      <li>
+        <span>90+</span>
+        <span>projects shipped as a developer before promotion</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Selected Work</h2>
+    <ul>
+      <li>
+        <span>Delivery</span>
+        <h3>AI Adoption Rollout at Jarilo</h3>
+        <p>
+          How I introduced AI tooling across a team of designers, developers,
+          and account managers — and what the numbers looked like after.
+        </p>
+      </li>
+      <li>
+        <span>Product</span>
+        <h3>Internal Project Management Tool</h3>
+        <p>
+          A lightweight internal product built to reduce coordination overhead
+          across 350+ concurrent projects.
+        </p>
+      </li>
+      <li>
+        <span>Technical</span>
+        <h3>Three.js Interactive Experience</h3>
+        <p>
+          A client-facing 3D piece built in Three.js and Blender — interactive,
+          performant, shipped on deadline.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      I spent a decade running bars and restaurants before I taught myself to
+      code. I joined Jarilo Design as a web developer in 2022, shipped over 90
+      projects, and was promoted to Technical Operations Lead in 2024. Now I run
+      delivery across design, development, QA, account management, and
+      consultancy.
+    </p>
+    <p>
+      My background is unusual for this role and I think that's the point.
+      Managing a kitchen at volume taught me things about coordination and calm
+      under pressure that no bootcamp covers. The animation degree didn't hurt
+      either — I can get into the detail of a Three.js build or a Blender scene
+      without needing a handoff.
+    </p>
+    <p>
+      What I'm most interested in right now is what AI-augmented delivery
+      actually looks like when you take it seriously — not the hype, but the
+      tooling, the process changes, and the honest accounting of what works and
+      what doesn't.
+    </p>
+    <a href="/about">More about me →</a>
+  </section>
+
+  <section>
+    <h2>Notes</h2>
+    <p>
+      A public notebook — thoughts, hacks and lessons, primarily for myself.
+    </p>
+    <ul>
+      <li>
+        <span>AI & Delivery</span>
+        <h3>What 41% actually means: measuring AI adoption in a real agency</h3>
+        <p>
+          The methodology behind the number, and why output metrics miss half
+          the story.
+        </p>
+      </li>
+      <li>
+        <span>Process</span>
+        <h3>Running 350+ projects a year without losing the thread</h3>
+        <p>How triage, tempo, and boring systems beat heroics every time.</p>
+      </li>
+      <li>
+        <span>Career</span>
+        <h3>On coming up through the wrong door</h3>
+        <p>
+          Hospitality to code to delivery — what the arc looks like from the
+          inside.
+        </p>
+      </li>
+      <li>
+        <span>Technical</span>
+        <h3>Why I still write code as a delivery lead</h3>
+        <p>Not a productivity argument — a credibility and empathy one.</p>
+      </li>
+    </ul>
+    <a href="/notes">All notes →</a>
+  </section>
+
+  <Hero />
+  <Me />
+  <Skills />
+  <Cards
+    cards={[
+      {
+        to: "/about",
+        title: "About Me",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#00ff00",
+        gradientTo: "#559955",
+      },
+      {
+        to: "/philosophies",
+        title: "Philosophies",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#ff0000",
+        gradientTo: "#995555",
+      },
+      {
+        to: "/beyond-tech",
+        title: "Beyond Tech",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#ff00ff",
+        gradientTo: "#995599",
+      },
+      {
+        to: "/work-summary",
+        title: "Work Summary",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#0000ff",
+        gradientTo: "#555599",
+      },
+    ]}
+  />
+</Main>

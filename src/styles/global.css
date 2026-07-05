@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+}
+
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,300&display=swap"); */
+
+/* @font-face {
+  font-family: "BasementGrotesque";
+  src:
+    local("Fraunces"),
+    url(./fonts/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf)
+      format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  src:
+    local("Inter"),
+    url(./fonts/Inter-VariableFont_slnt,wght.ttf) format("truetype");
+} */
+
+/* <style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+</style>
+Inter: CSS class for a variable style
+
+// <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+Fraunces: CSS class for a variable style
+
+// <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name
+
+.fraunces-<uniquifier> {
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+} */
+
+/* :root {
+  --gutter: max(30px, 15rem);
+} */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fraunces", serif;
+  display: inline-block;
+  transition: all 0.2s;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "SOFT" 0,
+    "WONK" 0;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h5 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.light-heading {
+  font-weight: 160;
+}
+
+html {
+  --background: #fffdfd;
+  --background-secondary: #eeeeee;
+  --surface: #f1eeee;
+  --grey-200: #222222;
+  --grey-400: #444444;
+  --grey-600: #333333;
+  --grey-900: #111111;
+
+  --measure: 55ch;
+}
+html.dark {
+  --background: #333;
+  --background-secondary: #222;
+  --surface: #555;
+  --grey-200: #eaeaea;
+  --grey-400: #acacac;
+  --grey-600: white;
+  --grey-900: #fafafa;
+}
+/* html[data-theme="dark"] {
+  --background: black;
+  --background-secondary: #222;
+  --grey-200: #eaeaea;
+  --grey-400: #acacac;
+  --grey-600: white;
+  --grey-900: #fafafa;
+} */
+
+body {
+  /* max-width: 80rem; */
+  /* margin: 0 auto;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  
+  color: var(--grey-600); */
+  padding: 20px;
+  max-width: max(30px, 90rem);
+  margin: 0 auto;
+  border: 2px dashed firebrick;
+  background-color: var(--background);
+}
+
+/* .wrapper {
+  --default-max-width: 55ch;
+
+  max-width: var(--max-width, var(--default-max-width));
+  margin-inline: auto;
+  padding-inline: 1rem;
+} */
+
+h1 {
+  font-size: 3rem;
+
+  color: var(--grey-600);
+  /* color: lime; */
+}
+h2 {
+  font-size: 2rem;
+
+  color: var(--grey-400);
+  /* mix-blend-mode: multiply; */
+  /* color: bla; */
+}
+
+a {
+  text-decoration: none;
+}
+p,
+li {
+  font-size: 1rem;
+  color: var(--grey-400);
+  opacity: 0.8;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+p::selection,
+span::selection {
+  background: #ff8c00;
+  color: yellow;
+  font-size: 1.9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+picture,
+iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+select {
+  appearance: base-select;
+  background-color: limegreen;
+  width: fit-content;
+}
+
+select::picker(select) {
+  width: fit-content;
+  appearance: base-select;
+  border-radius: 0.25rem;
+  background-color: var(--surface);
+  color: var(--grey-900);
+}
+select:open::picker-icon {
+  rotate: 180deg;
+}
+select::picker-icon {
+  font-size: 1rem;
+  color: yellow;
+  align-content: center;
+  display: flex;
+  transition: 150ms ease;
+  /* content: "▼"; */
+  rotate: 0deg;
+}
+
+select option:checked {
+  background-color: cyan;
+}
+select option::checkmark {
+  content: "dgdsg";
+  color: red;
+}
+
+select selectedcontent {
+  color: blue;
+}
+
+/* src/styles/tokens.css
+   Design tokens — hand-authored, no framework.
+   Import once in your base layout: import "../styles/tokens.css";
+*/

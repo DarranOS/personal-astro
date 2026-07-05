@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+import "../styles/tokens.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Welcome to my Astro site" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      const DARK_THEME_CLASS = "dark";
+      const COLOUR_MODE = "COLOUR_MODE";
+      const LIGHT_THEME = "LIGHT";
+      const DARK_THEME = "DARK";
+
+      const rooEl = document.documentElement;
+
+      const getInitialColorMode = () => {
+        const previouslySavedColourMode =
+          window.localStorage.getItem(COLOUR_MODE);
+
+        if (previouslySavedColourMode) {
+          console.log("previouslySavedColourMode", previouslySavedColourMode);
+          return previouslySavedColourMode;
+        }
+
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          console.log("mediaMatch Dark");
+          return DARK_THEME;
+        }
+
+        console.log("Light Theme", LIGHT_THEME);
+        return LIGHT_THEME;
+      };
+
+      const setInitialColorMode = (mode) => {
+        console.log("Setting initial color mode:", mode);
+        if (mode === DARK_THEME) {
+          rooEl.classList.add(DARK_THEME_CLASS);
+          // rooEl.setAttribute("data-theme", DARK_THEME_CLASS);
+        } else {
+          rooEl.classList.remove(DARK_THEME_CLASS);
+          // rooEl.setAttribute("data-theme", "");
+        }
+      };
+
+      const initialColorMode = getInitialColorMode();
+
+      setInitialColorMode(initialColorMode);
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
