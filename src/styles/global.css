@@ -90,7 +90,8 @@ h1 {
   font-size: 40px;
 
   &.text-3xl {
-    font-size: 5rem;
+    font-size: clamp(2rem, 2rem + 4vw, 5rem);
+    font-size: min(12.3cqi, 4rem);
   }
 }
 
@@ -185,6 +186,24 @@ li {
   margin: 0;
 }
 
+.hero-section {
+  padding-top: 2.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  container-type: inline;
+  container-name: hero;
+}
+.paragraphs {
+  & p {
+    margin-block: 0;
+
+    + p {
+      margin-top: var(--space-2);
+    }
+  }
+}
+
 h1::selection,
 h2::selection,
 h3::selection,
@@ -192,9 +211,8 @@ h4::selection,
 h5::selection,
 p::selection,
 span::selection {
-  background: var(--color-sage-bg);
+  background: var(--color-sage-text);
   color: var(--color-bg);
-  font-size: 1.9;
 }
 
 ul {
@@ -226,17 +244,23 @@ footer {
 .section-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
+  gap: var(--space-2);
 
   h2 {
-    font-size: 18px;
-    font-weight: 100;
-    max-width: 10ch;
+    font-size: 15px;
+    font-weight: 400;
     line-height: 1.4;
     color: var(--color-text-muted);
+    font-family: "Inter", sans-serif !important;
+    opacity: 0.7;
   }
-  @container section (min-width: 25rem) {
-    grid-template-columns: 128px minmax(0, 1fr);
+  @container section (min-width: 31rem) {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: var(--space-4);
+
+    h2 {
+      max-width: 10ch;
+    }
   }
 
   > div.section-right {
