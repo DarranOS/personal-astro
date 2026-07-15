@@ -45,7 +45,7 @@ import Me from "../components/Me.astro";
   </section>
 
   <section>
-    <div class="section-grid work">
+    <div class="section-grid work tags">
       <h2>Selected Work</h2>
 
       <div class="section-right">
@@ -109,7 +109,7 @@ import Me from "../components/Me.astro";
     <div class="section-grid">
       <h2>About</h2>
 
-      <div class="section-right">
+      <div class="section-right paragraphs">
         <p>
           I spent a decade running bars and restaurants before I taught myself
           to code. I joined Jarilo Design as a web developer in 2022, shipped
@@ -130,12 +130,12 @@ import Me from "../components/Me.astro";
           tooling, the process changes, and the honest accounting of what works
           and what doesn't.
         </p>
-        <a href="/about">More about me →</a>
+        <a href="/about" class="section-link">More about me →</a>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- <section>
     <div class="section-grid notes">
       <h2>Notes</h2>
 
@@ -144,25 +144,82 @@ import Me from "../components/Me.astro";
           A public notebook — thoughts, hacks and lessons, primarily for myself.
         </p>
         <ul>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="sage">AI & Delivery</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >What 41% actually means: measuring AI adoption in a real
+                    agency</a
+                  >
+                </h3>
+              </div>
+              <p>
+                The methodology behind the number, and why output metrics miss
+                half the story.
+              </p>
+            </article>
+          </li>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="dustyblue">Product</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Internal Project Management Tool</a
+                  >
+                </h3>
+              </div>
+              <p>
+                How triage, tempo, and boring systems beat heroics every time.
+              </p>
+            </article>
+          </li>
+
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="rosewood">Technical</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Three.js Interactive Experience</a
+                  >
+                </h3>
+              </div>
+              <p>
+                Not a productivity argument — a credibility and empathy one.
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="section-grid notes tags">
+      <h2>Notes</h2>
+
+      <div class="section-right">
+        <ul>
           <li>
-            <span>AI & Delivery</span>
+            <span class="clay">AI & Delivery</span>
             <h3>
               What 41% actually means: measuring AI adoption in a real agency
             </h3>
-            <p>
-              The methodology behind the number, and why output metrics miss
-              half the story.
-            </p>
+            <p>Not less work — different work, and a different bottleneck.</p>
           </li>
           <li>
-            <span>Process</span>
+            <span class="mauve">Process</span>
             <h3>Running 350+ projects a year without losing the thread</h3>
             <p>
-              How triage, tempo, and boring systems beat heroics every time.
+              Hospitality operations and software delivery rhyme more than
+              people expect.
             </p>
           </li>
           <li>
-            <span>Career</span>
+            <span class="sand">Career</span>
             <h3>On coming up through the wrong door</h3>
             <p>
               Hospitality to code to delivery — what the arc looks like from the
@@ -170,12 +227,12 @@ import Me from "../components/Me.astro";
             </p>
           </li>
           <li>
-            <span>Technical</span>
+            <span class="dustyblue">Technical</span>
             <h3>Why I still write code as a delivery lead</h3>
-            <p>Not a productivity argument — a credibility and empathy one.</p>
+            <p>Walking through the instancing trick that made this fast.</p>
           </li>
         </ul>
-        <a href="/notes">All notes →</a>
+        <a href="/notes" class="section-link">All notes →</a>
       </div>
     </div>
   </section>
@@ -218,7 +275,7 @@ import Me from "../components/Me.astro";
 </Main>
 
 <style>
-  .work ul {
+  .tags ul {
     /* background: aqua; */
     display: flex;
     flex-direction: column;

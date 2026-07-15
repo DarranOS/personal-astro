@@ -32,7 +32,7 @@
   --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
-  --font-size-sm: 0.875rem;
+  --font-size-sm: 0.925rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.75rem;
@@ -41,6 +41,8 @@
 
   --line-height-tight: 1.15;
   --line-height-body: 1.6;
+
+  --gutter: max(30px, 15rem);
 
   /* ---- Spacing scale (4px base) ---- */
   --space-1: 0.25rem;
