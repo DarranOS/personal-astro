@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+p {
+  margin-block: 0;
+}
+
 /* @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;1,300&display=swap"); */
 
 /* @font-face {
@@ -47,9 +51,9 @@ Fraunces: CSS class for a variable style
     "WONK" 0;
 } */
 
-/* :root {
+:root {
   --gutter: max(30px, 15rem);
-} */
+}
 
 html,
 body {
@@ -58,6 +62,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: "Inter", sans-serif;
+  font-weight: 300;
 }
 
 h1,
@@ -73,8 +78,9 @@ h6 {
   padding: 0;
   margin: 0;
   font-optical-sizing: auto;
-  font-weight: 500;
+  font-weight: 200;
   font-style: normal;
+  color: var(--color-text);
   font-variation-settings:
     "SOFT" 0,
     "WONK" 0;
@@ -82,6 +88,10 @@ h6 {
 
 h1 {
   font-size: 40px;
+
+  &.text-3xl {
+    font-size: 5rem;
+  }
 }
 
 h5 {
@@ -93,7 +103,7 @@ h5 {
   font-weight: 160;
 }
 
-html {
+/* html {
   --background: #fffdfd;
   --background-secondary: #eeeeee;
   --surface: #f1eeee;
@@ -112,32 +122,25 @@ html.dark {
   --grey-400: #acacac;
   --grey-600: white;
   --grey-900: #fafafa;
-}
-/* html[data-theme="dark"] {
-  --background: black;
-  --background-secondary: #222;
-  --grey-200: #eaeaea;
-  --grey-400: #acacac;
-  --grey-600: white;
-  --grey-900: #fafafa;
 } */
 
-body {
-  /* max-width: 80rem; */
-  /* margin: 0 auto;
-  display: grid;
-  height: 100vh;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
-  
-  color: var(--grey-600); */
-  padding: 20px;
-  max-width: max(30px, 90rem);
-  margin: 0 auto;
-  border: 2px dashed firebrick;
-  background-color: var(--background);
+mark {
+  background-color: unset;
+  color: var(--grey-900);
+  font-weight: 600;
 }
 
+body {
+  border: 2px dashed firebrick;
+  background-color: var(--color-bg);
+}
+
+main {
+  padding: 20px;
+  max-width: max(30px, 50rem);
+  margin: 0 auto;
+  /* border: 2px dashed goldenrod; */
+}
 /* .wrapper {
   --default-max-width: 55ch;
 
@@ -148,30 +151,38 @@ body {
 
 h1 {
   font-size: 3rem;
-
-  color: var(--grey-600);
-  /* color: lime; */
+  font-weight: 500;
 }
 h2 {
   font-size: 2rem;
+  color: var(--color-text);
 
-  color: var(--grey-400);
   /* mix-blend-mode: multiply; */
   /* color: bla; */
 }
 
 a {
   text-decoration: none;
+  color: var(--color-text);
 }
 p,
 li {
   font-size: 1rem;
-  color: var(--grey-400);
+  color: var(--color-text-muted);
   opacity: 0.8;
 }
 
+p {
+  margin-block: 0 var(--space-4);
+  line-height: 1.4;
+}
+
+p:last-child {
+  margin-block-end: 0;
+}
+
 li {
-  margin: 1rem 0;
+  margin: 0;
 }
 
 h1::selection,
@@ -181,8 +192,8 @@ h4::selection,
 h5::selection,
 p::selection,
 span::selection {
-  background: #ff8c00;
-  color: yellow;
+  background: var(--color-sage-bg);
+  color: var(--color-bg);
   font-size: 1.9;
 }
 
@@ -200,7 +211,86 @@ iframe {
   height: auto;
 }
 
-select {
+section {
+  padding-block: 10px;
+  container-type: inline-size;
+  container-name: section;
+}
+footer {
+  padding: 20px;
+  max-width: max(30px, 50rem);
+  margin: 0 auto;
+  /* border: 2px dashed rebeccapurple; */
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+
+  h2 {
+    font-size: 18px;
+    font-weight: 100;
+    max-width: 10ch;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+  }
+  @container section (min-width: 25rem) {
+    grid-template-columns: 128px minmax(0, 1fr);
+  }
+
+  > div.section-right {
+    border-top: 1px solid var(--color-text-muted);
+    padding-top: var(--space-4);
+    max-width: 90ch;
+    /* background: lime; */
+  }
+}
+
+section:not(:last-child) {
+  margin-bottom: 5vw;
+}
+section:not(:first-child) {
+  margin-top: 5vw;
+}
+
+.sage {
+  color: var(--color-sage-text);
+  background-color: var(--color-sage-bg);
+}
+.dustyblue {
+  color: var(--color-dustyblue-text);
+  background-color: var(--color-dustyblue-bg);
+}
+.rosewood {
+  color: var(--color-rosewood-text);
+  background-color: var(--color-rosewood-bg);
+}
+.stretched-link {
+  position: relative;
+}
+.stretched-link a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* 
+  --color-clay-bg: #efd9c9;
+  --color-clay-text: #6b4530;
+  --color-sage-bg: #dce3d2;
+  --color-sage-text: #47543a;
+  --color-dustyblue-bg: #d8e3e8;
+  --color-dustyblue-text: #3e5a63;
+  --color-mauve-bg: #e6d9e4;
+  --color-mauve-text: #5c4359;
+  --color-sand-bg: #eee4c9;
+  --color-sand-text: #6b5a2e;
+  --color-rosewood-bg: #e9d6d6;
+  --color-rosewood-text: #6b3e3e;
+ */
+
+/* select {
   appearance: base-select;
   background-color: limegreen;
   width: fit-content;
@@ -222,7 +312,7 @@ select::picker-icon {
   align-content: center;
   display: flex;
   transition: 150ms ease;
-  /* content: "▼"; */
+  content: "▼";
   rotate: 0deg;
 }
 
@@ -230,15 +320,27 @@ select option:checked {
   background-color: cyan;
 }
 select option::checkmark {
-  content: "dgdsg";
+  content: "X";
   color: red;
 }
 
 select selectedcontent {
   color: blue;
-}
+} */
 
 /* src/styles/tokens.css
    Design tokens — hand-authored, no framework.
    Import once in your base layout: import "../styles/tokens.css";
 */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

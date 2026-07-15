@@ -4,6 +4,8 @@
 npm create astro@latest -- --template basics
 ```
 
+https://www.reddit.com/r/web_design/comments/1uqnyxc/show_me_some_minimalistic_but_impressive_frontend/
+
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure

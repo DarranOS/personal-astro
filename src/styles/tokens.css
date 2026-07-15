@@ -1,6 +1,8 @@
 :root {
   /* ---- Base surface & text ---- */
-  --color-bg: #faf6f0; /* warm off-white */
+  --color-bg: oklab(
+    93.48100000000001% 0.00498 0.00981 / 0.958
+  ); /* warm off-white */
   --color-bg-raised: #f2ece3; /* slightly deeper, for cards/rows */
   --color-text: #2a2521; /* dark, not black */
   --color-text-muted: #6b6258; /* secondary copy, labels */
@@ -58,7 +60,7 @@
 }
 
 /* Optional dark mode — swap the base surface/text, keep pastels muted */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #1e1b18;
     --color-bg-raised: #262220;
@@ -67,4 +69,13 @@
     --color-border: #3a342e;
     --color-accent-tint: #4a332b;
   }
+} */
+
+html.dark {
+  --color-bg: #1e1b18;
+  --color-bg-raised: #262220;
+  --color-text: #efe8df;
+  --color-text-muted: #a69c90;
+  --color-border: #3a342e;
+  --color-accent-tint: #4a332b;
 }

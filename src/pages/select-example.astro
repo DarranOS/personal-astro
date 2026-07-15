@@ -1,0 +1,21 @@
+---
+import SelectPlayground from "../components/SelectPlayground";
+import Main from "../layouts/Main.astro";
+
+import "../styles/select-example.css";
+---
+
+<Main title="Select Example">
+  <section class="hero" aria-labelledby="hero-name">
+    <SelectPlayground client:load />
+  </section>
+</Main>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+</style>

@@ -1,0 +1,246 @@
+/* .playground {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-6, 2rem);
+  margin-block: var(--space-8, 3rem);
+}
+
+@media (max-width: 700px) {
+  .playground {
+    grid-template-columns: 1fr;
+  }
+}
+
+.playground-editors {
+  display: grid;
+  gap: var(--space-4, 1rem);
+}
+
+.playground-editors label {
+  display: grid;
+  gap: var(--space-2, 0.5rem);
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #8a7f6f);
+}
+
+.playground-editors textarea {
+  font-family: "SF Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  min-height: 200px;
+  padding: var(--space-4, 1rem);
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #e5ddd3);
+  background: var(--color-surface, #fdfaf6);
+  color: var(--color-text, #2b2620);
+  resize: vertical;
+  transition: border-color 0.15s ease;
+}
+
+.playground-editors textarea:focus {
+  outline: none;
+  border-color: var(--color-accent, #b5654a);
+}
+
+.playground-preview {
+  border: 1px solid var(--color-border, #e5ddd3);
+  border-radius: 6px;
+  width: 100%;
+  min-height: 420px;
+  background: #fff;
+}
+
+.playground-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playground-caption {
+  font-family: var(--font-serif, "Fraunces", serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-text-muted, #8a7f6f);
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+.select-playground {
+  margin-block: var(--space-8, 3rem);
+}
+
+.playground-caption {
+  font-family: var(--font-serif, "Fraunces", serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-text-muted, #8a7f6f);
+  margin-bottom: var(--space-4, 1rem);
+}
+
+
+*/
+
+.select-playground-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-6, 2rem);
+
+  label {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-family: var(--font-sans, sans-serif);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted, #8a7f6f);
+      margin-bottom: var(--space-2, 0.5rem);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .select-playground-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-accordion {
+  background: #eee;
+  padding: 0.6rem;
+  border-radius: 8px;
+
+  /* summary {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  ::marker {
+    color: orangered;
+    font-size: 2rem;
+  }
+  textarea {
+    width: 100%;
+  }
+  code {
+    color: #444;
+    font-size: 1rem;
+    display: block;
+  }
+
+  span {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    display: block;
+    width: 96%;
+  }
+}
+
+.css-fields {
+  display: grid;
+  gap: var(--space-4, 12px);
+  height: 75vh;
+  overflow: auto;
+}
+
+summary {
+  /* Pin the custom marker to the container */
+  position: relative;
+  /* Register summary as an anchor element */
+  anchor-name: --summary;
+
+  &::marker {
+    content: "";
+  }
+
+  &::before,
+  &::after {
+    /* Custom marker dimensions */
+    content: "";
+    border-block-start: 3px solid orangered;
+    height: 0;
+    width: 1rem;
+
+    /* Positions the lines */
+    inset-block-start: 50%;
+    inset-inline-end: 0;
+
+    /* Anchor the shape to the summary */
+    position: absolute;
+    position-anchor: --summary;
+    position-area: top end;
+  }
+
+  /* Rotate just the ::after line to create a "+"" shape */
+  &::after {
+    transform: rotate(90deg);
+    transform-origin: 50%;
+  }
+}
+
+/* Rotate the line when open */
+details[open] summary::after {
+  transform: rotate(0deg);
+}
+
+/* 
+.select-playground-fields {
+  display: grid;
+  gap: var(--space-4, 1rem);
+  align-content: start;
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field-label {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted, #8a7f6f);
+}
+
+.field-label code {
+  font-family: "SF Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--color-text, #2b2620);
+}
+
+.field-note {
+  font-size: 0.7rem;
+  color: var(--color-text-muted, #8a7f6f);
+  font-style: italic;
+}
+
+.field textarea {
+  font-family: "SF Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  min-height: 80px;
+  padding: var(--space-3, 0.75rem);
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #e5ddd3);
+  background: var(--color-surface, #fdfaf6);
+  color: var(--color-text, #2b2620);
+  resize: vertical;
+}
+
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent, #b5654a);
+}
+
+.select-playground-preview {
+  position: sticky;
+  top: var(--space-6, 2rem);
+  border: 1px solid var(--color-border, #e5ddd3);
+  border-radius: 6px;
+  width: 100%;
+  min-height: 300px;
+  background: #fff;
+} */

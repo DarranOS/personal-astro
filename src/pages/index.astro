@@ -8,10 +8,10 @@ import Me from "../components/Me.astro";
 
 <Main title="Darran O'Shea">
   <section>
-    <h1>Darran O'Shea</h1>
+    <h1 class="text-3xl">Darran O'Shea</h1>
     <p>
-      Technical delivery lead at Jarilo Design. Self-taught, hospitality-raised,
-      still ships code.
+      Technical delivery lead at <mark>Jarilo Design</mark>. Self-taught,
+      hospitality-raised, still ships code.
     </p>
     <p>
       Currently shipping 350+ projects a year and figuring out what AI-augmented
@@ -41,100 +41,145 @@ import Me from "../components/Me.astro";
   </section>
 
   <section>
-    <h2>Selected Work</h2>
-    <ul>
-      <li>
-        <span>Delivery</span>
-        <h3>AI Adoption Rollout at Jarilo</h3>
-        <p>
-          How I introduced AI tooling across a team of designers, developers,
-          and account managers — and what the numbers looked like after.
-        </p>
-      </li>
-      <li>
-        <span>Product</span>
-        <h3>Internal Project Management Tool</h3>
-        <p>
-          A lightweight internal product built to reduce coordination overhead
-          across 350+ concurrent projects.
-        </p>
-      </li>
-      <li>
-        <span>Technical</span>
-        <h3>Three.js Interactive Experience</h3>
-        <p>
-          A client-facing 3D piece built in Three.js and Blender — interactive,
-          performant, shipped on deadline.
-        </p>
-      </li>
-    </ul>
+    <div class="section-grid work">
+      <h2>Selected Work</h2>
+
+      <div class="section-right">
+        <ul>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="sage">Delivery</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >AI Adoption Rollout at Jarilo</a
+                  >
+                </h3>
+              </div>
+              <p>
+                How I introduced AI tooling across a team of designers,
+                developers, and account managers — and what the numbers looked
+                like after.
+              </p>
+            </article>
+          </li>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="dustyblue">Product</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Internal Project Management Tool</a
+                  >
+                </h3>
+              </div>
+              <p>
+                A lightweight internal product built to reduce coordination
+                overhead across 350+ concurrent projects.
+              </p>
+            </article>
+          </li>
+
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="rosewood">Technical</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Three.js Interactive Experience</a
+                  >
+                </h3>
+              </div>
+              <p>
+                A client-facing 3D piece built in Three.js and Blender —
+                interactive, performant, shipped on deadline.
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>About</h2>
-    <p>
-      I spent a decade running bars and restaurants before I taught myself to
-      code. I joined Jarilo Design as a web developer in 2022, shipped over 90
-      projects, and was promoted to Technical Operations Lead in 2024. Now I run
-      delivery across design, development, QA, account management, and
-      consultancy.
-    </p>
-    <p>
-      My background is unusual for this role and I think that's the point.
-      Managing a kitchen at volume taught me things about coordination and calm
-      under pressure that no bootcamp covers. The animation degree didn't hurt
-      either — I can get into the detail of a Three.js build or a Blender scene
-      without needing a handoff.
-    </p>
-    <p>
-      What I'm most interested in right now is what AI-augmented delivery
-      actually looks like when you take it seriously — not the hype, but the
-      tooling, the process changes, and the honest accounting of what works and
-      what doesn't.
-    </p>
-    <a href="/about">More about me →</a>
+    <div class="section-grid">
+      <h2>About</h2>
+
+      <div class="section-right">
+        <p>
+          I spent a decade running bars and restaurants before I taught myself
+          to code. I joined Jarilo Design as a web developer in 2022, shipped
+          over 90 projects, and was promoted to Technical Operations Lead in
+          2024. Now I run delivery across design, development, QA, account
+          management, and consultancy.
+        </p>
+        <p>
+          My background is unusual for this role and I think that's the point.
+          Managing a kitchen at volume taught me things about coordination and
+          calm under pressure that no bootcamp covers. The animation degree
+          didn't hurt either — I can get into the detail of a Three.js build or
+          a Blender scene without needing a handoff.
+        </p>
+        <p>
+          What I'm most interested in right now is what AI-augmented delivery
+          actually looks like when you take it seriously — not the hype, but the
+          tooling, the process changes, and the honest accounting of what works
+          and what doesn't.
+        </p>
+        <a href="/about">More about me →</a>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>Notes</h2>
-    <p>
-      A public notebook — thoughts, hacks and lessons, primarily for myself.
-    </p>
-    <ul>
-      <li>
-        <span>AI & Delivery</span>
-        <h3>What 41% actually means: measuring AI adoption in a real agency</h3>
+    <div class="section-grid notes">
+      <h2>Notes</h2>
+
+      <div class="section-right">
         <p>
-          The methodology behind the number, and why output metrics miss half
-          the story.
+          A public notebook — thoughts, hacks and lessons, primarily for myself.
         </p>
-      </li>
-      <li>
-        <span>Process</span>
-        <h3>Running 350+ projects a year without losing the thread</h3>
-        <p>How triage, tempo, and boring systems beat heroics every time.</p>
-      </li>
-      <li>
-        <span>Career</span>
-        <h3>On coming up through the wrong door</h3>
-        <p>
-          Hospitality to code to delivery — what the arc looks like from the
-          inside.
-        </p>
-      </li>
-      <li>
-        <span>Technical</span>
-        <h3>Why I still write code as a delivery lead</h3>
-        <p>Not a productivity argument — a credibility and empathy one.</p>
-      </li>
-    </ul>
-    <a href="/notes">All notes →</a>
+        <ul>
+          <li>
+            <span>AI & Delivery</span>
+            <h3>
+              What 41% actually means: measuring AI adoption in a real agency
+            </h3>
+            <p>
+              The methodology behind the number, and why output metrics miss
+              half the story.
+            </p>
+          </li>
+          <li>
+            <span>Process</span>
+            <h3>Running 350+ projects a year without losing the thread</h3>
+            <p>
+              How triage, tempo, and boring systems beat heroics every time.
+            </p>
+          </li>
+          <li>
+            <span>Career</span>
+            <h3>On coming up through the wrong door</h3>
+            <p>
+              Hospitality to code to delivery — what the arc looks like from the
+              inside.
+            </p>
+          </li>
+          <li>
+            <span>Technical</span>
+            <h3>Why I still write code as a delivery lead</h3>
+            <p>Not a productivity argument — a credibility and empathy one.</p>
+          </li>
+        </ul>
+        <a href="/notes">All notes →</a>
+      </div>
+    </div>
   </section>
 
-  <Hero />
+  <!-- <Hero />
   <Me />
-  <Skills />
-  <Cards
+  <Skills /> -->
+  <!-- <Cards
     cards={[
       {
         to: "/about",
@@ -165,5 +210,40 @@ import Me from "../components/Me.astro";
         gradientTo: "#555599",
       },
     ]}
-  />
+  /> -->
 </Main>
+
+<style>
+  .work ul {
+    /* background: aqua; */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    article {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .row {
+      display: flex;
+      gap: var(--space-2);
+    }
+    span {
+      /* background-color: lemonchiffon; */
+      display: block;
+      flex: 0;
+      width: fit-content;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0.1lh 0.2lh;
+      border-radius: 4px;
+    }
+  }
+</style>
