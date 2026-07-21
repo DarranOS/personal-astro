@@ -49,6 +49,10 @@ My first approach was using Three.js's built-in iridescence.
 />
 ```
 
+```jsx
+<YouTubeEmbed videoId="zpbAnk8ka5g" title="My video" />
+```
+
 While it looked nice, it didn't let me define specific colours.
 
 Real flip paints often shift from something like:

@@ -4,8 +4,7 @@ import Hero from "../components/Hero.astro";
 import Cards from "../components/Cards.astro";
 import Skills from "../components/Skills.astro";
 import Me from "../components/Me.astro";
-import "lite-youtube-embed/src/lite-yt-embed.css";
-import YouTubeEmbed from "../components/YoutubeEmbed.astro";
+// import "lite-youtube-embed/src/lite-yt-embed.css";
 
 const selectedWork = [
   {
@@ -103,7 +102,7 @@ const selectedList = [
 ---
 
 <Main title="Darran O'Shea">
-  <script>
+  <!-- <script>
     import "lite-youtube-embed";
   </script>
 
@@ -114,13 +113,14 @@ const selectedList = [
     window.addEventListener("DOMContentLoaded", () => {
       new PagefindUI({ element: "#search" });
     });
-  </script>
-
-  <YouTubeEmbed videoId="zpbAnk8ka5g" title="My video" />
+  </script> -->
 
   <section>
     <div class="hero-section">
-      <strong>Darran O'Shea</strong> likes to learn about how intersting things work
+      <h1>
+        <strong>Darran O'Shea</strong> likes to learn about how intersting things
+        work
+      </h1>
     </div>
     <div class="paragraphs">
       <p>
@@ -133,72 +133,71 @@ const selectedList = [
       </p>
     </div>
   </section>
-</Main>
 
-<section class="marquee-container">
-  <div class="marquee-grid">
-    <div class="work tags">
-      <h2>Selected Work</h2>
+  <section class="marquee-container">
+    <div class="marquee-grid">
+      <div class="work tags">
+        <h2>Selected Work</h2>
 
-      <ul class="work-preview__list">
-        {
-          selectedWork.map((item) => (
-            <li class="work-preview__item">
-              <a href={item.href} class="work-preview__link">
-                {item.thumbnail && (
-                  <img
-                    src={item.thumbnail}
-                    alt=""
-                    class="work-preview__thumbnail"
-                    loading="lazy"
-                    width="200"
-                    height="200"
-                  />
-                )}
-                <div class="work-preview__meta">
-                  <span class="work-preview__category">{item.category}</span>
-                  <span class="work-preview__title">{item.title}</span>
-                  <span class="work-preview__description">
-                    {item.description}
-                  </span>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-
-    <div class="notepad-notes tags">
-      <div>
-        <h2>My Notebook</h2>
-        <p class="subsection_text">A collection of nerdy reminders</p>
+        <ul class="work-preview__list">
+          {
+            selectedWork.map((item) => (
+              <li class="work-preview__item">
+                <a href={item.href} class="work-preview__link">
+                  {item.thumbnail && (
+                    <img
+                      src={item.thumbnail}
+                      alt=""
+                      class="work-preview__thumbnail"
+                      loading="lazy"
+                      width="200"
+                      height="200"
+                    />
+                  )}
+                  <div class="work-preview__meta">
+                    <span class="work-preview__category">{item.category}</span>
+                    <span class="work-preview__title">{item.title}</span>
+                    <span class="work-preview__description">
+                      {item.description}
+                    </span>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
 
-      <ul class="notes-preview__list">
-        {
-          selectedNotes.map((item) => (
-            <li class="stretched-link">
-              <a href={item.href} class="work-preview__link">
-                <div class="work-preview__meta">
-                  <h3>
-                    <span>{item.title}</span>
-                    <span class:list={["tag", item.tagColor]}>
-                      {item.category}
-                    </span>
-                  </h3>
-                  <p class="work-preview__description">{item.description}</p>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="notepad-notes tags">
+        <div>
+          <h2>My Notebook</h2>
+          <p class="subsection_text">A collection of nerdy reminders</p>
+        </div>
 
-      <a href="https://www.youtube.com/watch?v=hbIZX6tE9JY">
-        https: www.youtube.com watch?v="hbIZX6tE9JY</a
-      >
-      <!-- <ul>
+        <ul class="notes-preview__list">
+          {
+            selectedNotes.map((item) => (
+              <li class="stretched-link">
+                <a href={item.href} class="work-preview__link">
+                  <div class="work-preview__meta">
+                    <h3>
+                      <span>{item.title}</span>
+                      <span class:list={["tag", item.tagColor]}>
+                        {item.category}
+                      </span>
+                    </h3>
+                    <p class="work-preview__description">{item.description}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <a href="https://www.youtube.com/watch?v=hbIZX6tE9JY">
+          https: www.youtube.com watch?v="hbIZX6tE9JY</a
+        >
+        <!-- <ul>
           <article>
             <div class="row">
               <span class="sage">2026 CSS</span>
@@ -268,62 +267,62 @@ const selectedList = [
       </div>
     </div> -->
 
-      <ul class="listpad-list">
-        {
-          selectedList.map((item) => (
-            <li class="stretched-link">
-              <a href={item.href} class="work-preview__link">
-                <div class="work-preview__meta">
-                  <h3>
-                    <span>{item.title}</span>
-                    <span class:list={["tag", item.tagColor]}>
-                      {item.category}
-                    </span>
-                  </h3>
-                  <p class="work-preview__description">{item.description}</p>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-        <a href="/notes" class="section-link">All notes →</a>
-      </ul>
-    </div>
-  </div>
-  <section>
-    <div class="section-grid">
-      <h2>About</h2>
-
-      <div class="section-right paragraphs">
-        <p>
-          I spent a decade running bars and restaurants before I taught myself
-          to code. I joined Jarilo Design as a web developer in 2022, shipped
-          over 90 projects, and was promoted to Technical Operations Lead in
-          2024. Now I run delivery across design, development, QA, account
-          management, and consultancy.
-        </p>
-        <p>
-          My background is unusual for this role and I think that's the point.
-          Managing a kitchen at volume taught me things about coordination and
-          calm under pressure that no bootcamp covers. The animation degree
-          didn't hurt either — I can get into the detail of a Three.js build or
-          a Blender scene without needing a handoff.
-        </p>
-        <p>
-          What I'm most interested in right now is what AI-augmented delivery
-          actually looks like when you take it seriously — not the hype, but the
-          tooling, the process changes, and the honest accounting of what works
-          and what doesn't.
-        </p>
-        <a href="/about" class="section-link">More about me →</a>
+        <ul class="listpad-list">
+          {
+            selectedList.map((item) => (
+              <li class="stretched-link">
+                <a href={item.href} class="work-preview__link">
+                  <div class="work-preview__meta">
+                    <h3>
+                      <span>{item.title}</span>
+                      <span class:list={["tag", item.tagColor]}>
+                        {item.category}
+                      </span>
+                    </h3>
+                    <p class="work-preview__description">{item.description}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+          <a href="/notes" class="section-link">All notes →</a>
+        </ul>
       </div>
     </div>
-  </section>
+    <section>
+      <div class="section-grid">
+        <h2>About</h2>
 
-  <!-- <Hero />
+        <div class="section-right paragraphs">
+          <p>
+            I spent a decade running bars and restaurants before I taught myself
+            to code. I joined Jarilo Design as a web developer in 2022, shipped
+            over 90 projects, and was promoted to Technical Operations Lead in
+            2024. Now I run delivery across design, development, QA, account
+            management, and consultancy.
+          </p>
+          <p>
+            My background is unusual for this role and I think that's the point.
+            Managing a kitchen at volume taught me things about coordination and
+            calm under pressure that no bootcamp covers. The animation degree
+            didn't hurt either — I can get into the detail of a Three.js build
+            or a Blender scene without needing a handoff.
+          </p>
+          <p>
+            What I'm most interested in right now is what AI-augmented delivery
+            actually looks like when you take it seriously — not the hype, but
+            the tooling, the process changes, and the honest accounting of what
+            works and what doesn't.
+          </p>
+          <a href="/about" class="section-link">More about me →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- <Hero />
   <Me />
   <Skills /> -->
-  <!-- <Cards
+    <!-- <Cards
     cards={[
       {
         to: "/about",
@@ -355,7 +354,7 @@ const selectedList = [
       },
     ]}
   /> -->
-
+  </section>
   <style>
     .tags ul {
       /* background: aqua; */
@@ -462,4 +461,4 @@ const selectedList = [
       font-size: var(--font-size-lg);
     }
   </style>
-</section>
+</Main>
