@@ -89,7 +89,8 @@ body {
 
 main {
   padding: 20px;
-  max-width: max(30px, 50rem);
+  /* max-width: max(30px, 50rem); */
+  max-width: max(30px, 70rem);
   margin: 0 auto;
   /* border: 2px dashed goldenrod; */
 }
@@ -229,6 +230,22 @@ footer {
 } */
 section:not(:first-child) {
   margin-top: min(5vw, var(--space-12));
+}
+
+.tag {
+  /* flex: 0; */
+  width: fit-content;
+  font-size: 13px;
+  font-weight: 500;
+  padding: calc(0.2lh + 3px) 0.4lh;
+  border-radius: 4px;
+  font-family: var(--font-body);
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
 }
 
 .sage {

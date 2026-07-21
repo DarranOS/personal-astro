@@ -1,0 +1,457 @@
+---
+import Main from "../layouts/Main.astro";
+import Hero from "../components/Hero.astro";
+import Cards from "../components/Cards.astro";
+import Skills from "../components/Skills.astro";
+import Me from "../components/Me.astro";
+
+const selectedWork = [
+  {
+    category: "Delivery",
+    title: "Rolling out AI-augmented delivery at Jarilo",
+    description:
+      "How a 41% output increase actually happened, process by process.",
+    href: "/work/ai-adoption-rollout",
+    thumbnail: "/images/image-1.webp",
+  },
+  {
+    category: "Product",
+    title: "An internal tool for tracking delivery health",
+    description: "Built to replace a spreadsheet nobody trusted anymore.",
+    href: "/work/internal-product",
+    thumbnail: "/images/image-2.webp",
+  },
+  {
+    category: "Three.js",
+    title: "How to Flip Paint in Three.ja",
+    description: "Figuring out fresnels x-mods controller.",
+    href: "/work/threejs-particle-study",
+    thumbnail: "/images/xmods-1.png",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    thumbnail: "/images/darran-o-shea.jpg",
+  },
+];
+const selectedNotes = [
+  {
+    category: "2026 CSS",
+    title: "Playing with Offset Path Animations",
+    description: "Thanks Kevin Powell!!",
+    href: "/work/ai-adoption-rollout",
+    tagColor: "sage",
+  },
+  {
+    category: "Product",
+    title: "An internal tool for tracking delivery health",
+    description: "Built to replace a spreadsheet nobody trusted anymore.",
+    href: "/work/internal-product",
+    tagColor: "dustyblue",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    tagColor: "mauve",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    tagColor: "rosewood",
+  },
+];
+const selectedList = [
+  {
+    category: "AI & Delivery",
+    title: " What 41% actually means: measuring AI adoption in a real agency",
+    description: "Not less work — different work, and a different bottleneck.",
+    href: "/work/ai-adoption-rollout",
+    tagColor: "clay",
+  },
+  {
+    category: "Process",
+    title: "Running 350+ projects a year without losing the thread",
+    description:
+      "Hospitality operations and software delivery rhyme more than people expect.",
+    href: "/work/internal-product",
+    tagColor: "mauve",
+  },
+  {
+    category: "Career",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    tagColor: "sand",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description:
+      "Hospitality to code to delivery — what the arc looks like from the inside.",
+    href: "/work/threejs-particle-study",
+    tagColor: "rosewood",
+  },
+];
+---
+
+<Main title="Darran O'Shea">
+  <div id="search"></div>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-ui.js" is:inline></script>
+  <script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+      new PagefindUI({ element: "#search" });
+    });
+  </script>
+
+  <section>
+    <div class="hero-section">
+      <h1 class="text-2xl">
+        <strong>Darran O'Shea</strong> likes to learn about how intersting things
+        work
+      </h1>
+      <div class="paragraphs">
+        <p>
+          Technical delivery lead at <mark>Jarilo Design</mark>. Self-taught,
+          hospitality-raised, still ships code.
+        </p>
+        <p>
+          Currently shipping 350+ projects a year and figuring out what
+          AI-augmented delivery actually looks like in practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="marquee-container">
+    <div class="marquee-grid">
+      <div class="work tags">
+        <h2>Selected Work</h2>
+
+        <ul class="work-preview__list">
+          {
+            selectedWork.map((item) => (
+              <li class="work-preview__item">
+                <a href={item.href} class="work-preview__link">
+                  {item.thumbnail && (
+                    <img
+                      src={item.thumbnail}
+                      alt=""
+                      class="work-preview__thumbnail"
+                      loading="lazy"
+                      width="200"
+                      height="200"
+                    />
+                  )}
+                  <div class="work-preview__meta">
+                    <span class="work-preview__category">{item.category}</span>
+                    <span class="work-preview__title">{item.title}</span>
+                    <span class="work-preview__description">
+                      {item.description}
+                    </span>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="notepad-notes tags">
+        <div>
+          <h2>My Notebook</h2>
+          <p class="subsection_text">A collection of nerdy reminders</p>
+        </div>
+
+        <ul class="notes-preview__list">
+          {
+            selectedNotes.map((item) => (
+              <li class="stretched-link">
+                <a href={item.href} class="work-preview__link">
+                  <div class="work-preview__meta">
+                    <h3>
+                      <span>{item.title}</span>
+                      <span class:list={["tag", item.tagColor]}>
+                        {item.category}
+                      </span>
+                    </h3>
+                    <p class="work-preview__description">{item.description}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- <ul>
+          <article>
+            <div class="row">
+              <span class="sage">2026 CSS</span>
+              <h3>
+                <a href="/notes/ai-adoption-rollout"
+                  >AI Adoption Rollout at Jarilo</a
+                >
+              </h3>
+            </div>
+            <p>
+              How I introduced AI tooling across a team of designers,
+              developers, and account managers — and what the numbers looked
+              like after.
+            </p>
+          </article>
+        </ul>
+        <li class="stretched-link">
+          <article>
+            <div class="row">
+              <span class="dustyblue">Product</span>
+              <h3>
+                <a href="/notes/ai-adoption-rollout"
+                  >Internal Project Management Tool</a
+                >
+              </h3>
+            </div>
+            <p>
+              A lightweight internal product built to reduce coordination
+              overhead across 350+ concurrent projects.
+            </p>
+          </article>
+        </li>
+
+        <li class="stretched-link">
+          <article>
+            <div class="row">
+              <span class="sage">2026 CSS</span>
+              <h3>
+                <a href="/notes/ai-adoption-rollout"
+                  >AI Adoption Rollout at Jarilo</a
+                >
+              </h3>
+            </div>
+            <p>
+              How I introduced AI tooling across a team of designers,
+              developers, and account managers — and what the numbers looked
+              like after.
+            </p>
+          </article>
+        </li>
+        <li class="stretched-link">
+          <article>
+            <div class="row">
+              <span class="rosewood">Technical</span>
+              <h3>
+                <a href="/notes/ai-adoption-rollout"
+                  >Three.js Interactive Experience</a
+                >
+              </h3>
+            </div>
+            <p>
+              A client-facing 3D piece built in Three.js and Blender —
+              interactive, performant, shipped on deadline.
+            </p>
+          </article>
+        </li>
+      </div>
+    </div> -->
+
+        <ul class="listpad-list">
+          {
+            selectedList.map((item) => (
+              <li class="stretched-link">
+                <a href={item.href} class="work-preview__link">
+                  <div class="work-preview__meta">
+                    <h3>
+                      <span>{item.title}</span>
+                      <span class:list={["tag", item.tagColor]}>
+                        {item.category}
+                      </span>
+                    </h3>
+                    <p class="work-preview__description">{item.description}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+          <a href="/notes" class="section-link">All notes →</a>
+        </ul>
+      </div>
+    </div>
+    <section>
+      <div class="section-grid">
+        <h2>About</h2>
+
+        <div class="section-right paragraphs">
+          <p>
+            I spent a decade running bars and restaurants before I taught myself
+            to code. I joined Jarilo Design as a web developer in 2022, shipped
+            over 90 projects, and was promoted to Technical Operations Lead in
+            2024. Now I run delivery across design, development, QA, account
+            management, and consultancy.
+          </p>
+          <p>
+            My background is unusual for this role and I think that's the point.
+            Managing a kitchen at volume taught me things about coordination and
+            calm under pressure that no bootcamp covers. The animation degree
+            didn't hurt either — I can get into the detail of a Three.js build
+            or a Blender scene without needing a handoff.
+          </p>
+          <p>
+            What I'm most interested in right now is what AI-augmented delivery
+            actually looks like when you take it seriously — not the hype, but
+            the tooling, the process changes, and the honest accounting of what
+            works and what doesn't.
+          </p>
+          <a href="/about" class="section-link">More about me →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- <Hero />
+  <Me />
+  <Skills /> -->
+    <!-- <Cards
+    cards={[
+      {
+        to: "/about",
+        title: "About Me",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#00ff00",
+        gradientTo: "#559955",
+      },
+      {
+        to: "/philosophies",
+        title: "Philosophies",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#ff0000",
+        gradientTo: "#995555",
+      },
+      {
+        to: "/beyond-tech",
+        title: "Beyond Tech",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#ff00ff",
+        gradientTo: "#995599",
+      },
+      {
+        to: "/work-summary",
+        title: "Work Summary",
+        image: "/images/darran-o-shea.jpg",
+        gradientFrom: "#0000ff",
+        gradientTo: "#555599",
+      },
+    ]}
+  /> -->
+
+    <style>
+      .tags ul {
+        /* background: aqua; */
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+
+        li {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+        article {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+
+        .row {
+          display: flex;
+          gap: var(--space-2);
+        }
+
+        .work-preview__item {
+          outline: 2px solid var(--color-border);
+          padding: 1rem;
+          background-color: var(--color-bg-raised);
+          border-radius: 2rem;
+
+          & img {
+            border-radius: 2rem;
+            width: 100%;
+            aspect-ratio: 1;
+          }
+        }
+      }
+      .work-preview__list {
+        display: grid !important;
+        gap: 1rem !important;
+
+        /* border: 3px solid lime; */
+        /* background-color: rgba(255, 255, 0, 0.152); */
+
+        @container marquee (min-width: 80ch) {
+          grid-template-columns: 1fr 1fr !important;
+          grid-area: cards;
+        }
+      }
+
+      .work-preview__meta {
+        /* background-color: lime; */
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1) !important;
+      }
+
+      .work-preview__title {
+        font-size: 1.4rem !important;
+        font-family: var(--font-display);
+        font-weight: 400 !important;
+      }
+
+      .marquee-grid {
+        display: grid !important;
+        /* border: 3px solid cyan;
+    background-color: rgba(255, 255, 0, 0.152); */
+        gap: 2rem;
+        grid-template-columns: 1fr;
+
+        @container marquee (min-width: 70ch) {
+          grid-template-columns: 2fr 1fr !important;
+          grid-template-rows: auto !important;
+          /* gap: var(--space-4); */
+          grid-template-areas:
+            "cards notes"
+            "list notes";
+        }
+      }
+
+      .notepad-notes {
+        /* outline: 4px solid red;
+    background-color: rgba(255, 0, 187, 0.172); */
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        @container marquee (min-width: 70ch) {
+          grid-area: notes;
+        }
+      }
+      .listpad-list {
+        /* background-color: rgba(0, 255, 13, 0.172); */
+        @container marquee (min-width: 70ch) {
+          grid-area: list;
+        }
+      }
+
+      .marquee-container {
+        container-type: inline-size;
+        container-name: marquee;
+      }
+
+      .subsection_text {
+        color: var(--color-text) !important;
+        font-size: var(--font-size-lg);
+      }
+    </style>
+  </section></Main
+>
