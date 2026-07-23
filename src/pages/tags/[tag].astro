@@ -1,0 +1,35 @@
+---
+// src/pages/tags/[tag].astro
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  // Build a unique set of tags across all posts
+  const allTags = [...new Set(posts.flatMap((post: any) => post.data.tags))];
+
+  return allTags.map((tag) => {
+    const filteredPosts = posts.filter((post: any) =>
+      post.data.tags.includes(tag),
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<h1>Posts tagged "{tag}"</h1>
+<ul>
+  {
+    posts.map((post: any) => (
+      <li>
+        <a href={`/blog/${post.id}`}>{post.data.title}</a>
+      </li>
+    ))
+  }
+</ul>

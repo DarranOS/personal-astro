@@ -1,46 +1,12 @@
 ---
 import Main from "../layouts/Main.astro";
-import Hero from "../components/Hero.astro";
-import Cards from "../components/Cards.astro";
-import Skills from "../components/Skills.astro";
-import Me from "../components/Me.astro";
-// import "lite-youtube-embed/src/lite-yt-embed.css";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
-const selectedWork = [
-  {
-    category: "Delivery",
-    title: "Rolling out AI-augmented delivery at Jarilo",
-    description:
-      "How a 41% output increase actually happened, process by process.",
-    href: "/work/ai-adoption-rollout",
-    thumbnail: "/images/image-1.webp",
-  },
-  {
-    category: "Product",
-    title: "An internal tool for tracking delivery health",
-    description: "Built to replace a spreadsheet nobody trusted anymore.",
-    href: "/work/internal-product",
-    thumbnail: "/images/image-2.webp",
-  },
-  {
-    category: "Three.js",
-    title: "How to Flip Paint in Three.ja",
-    description: "Figuring out fresnels x-mods controller.",
-    href: "/work/threejs-particle-study",
-    thumbnail: "/images/xmods-1.png",
-  },
-  {
-    category: "Three.js",
-    title: "Interactive particle study",
-    description: "A small WebGL piece exploring instanced geometry and scroll.",
-    href: "/work/threejs-particle-study",
-    thumbnail: "/images/darran-o-shea.jpg",
-  },
-];
 const selectedNotes = [
   {
     category: "2026 CSS",
-    title: "Playing with Offset Path Animations",
+    title: "Playing with Offset Path Animations Animations",
     description: "Thanks Kevin Powell!!",
     href: "/work/ai-adoption-rollout",
     tagColor: "sage",
@@ -99,26 +65,15 @@ const selectedList = [
     tagColor: "rosewood",
   },
 ];
+
+const posts = await getCollection("blog");
 ---
 
 <Main title="Darran O'Shea">
-  <!-- <script>
-    import "lite-youtube-embed";
-  </script>
-
-  <div id="search"></div>
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-  <script src="/pagefind/pagefind-ui.js" is:inline></script>
-  <script is:inline>
-    window.addEventListener("DOMContentLoaded", () => {
-      new PagefindUI({ element: "#search" });
-    });
-  </script> -->
-
   <section>
     <div class="hero-section">
       <h1>
-        <strong>Darran O'Shea</strong> likes to learn about how intersting things
+        <strong>Darran O'Shea</strong> likes to learn about how interesting things
         work
       </h1>
     </div>
@@ -134,31 +89,40 @@ const selectedList = [
     </div>
   </section>
 
+  <ul class="blogs">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
   <section class="marquee-container">
     <div class="marquee-grid">
-      <div class="work tags">
-        <h2>Selected Work</h2>
+      <div class="column gap-6 tags">
+        <div class="column gap-2">
+          <h2>Selected Work</h2>
+          <p class="subsection_text">A collection of nerdy reminders</p>
+        </div>
 
         <ul class="work-preview__list">
           {
-            selectedWork.map((item) => (
+            posts.map((post) => (
               <li class="work-preview__item">
-                <a href={item.href} class="work-preview__link">
-                  {item.thumbnail && (
-                    <img
-                      src={item.thumbnail}
-                      alt=""
-                      class="work-preview__thumbnail"
-                      loading="lazy"
-                      width="200"
-                      height="200"
+                <a href={`/blog/${post.id}`} class="work-preview__link">
+                  {post.data.poster && (
+                    <Image
+                      src={post.data.poster}
+                      alt={post.data.title}
+                      width={800}
                     />
                   )}
-                  <div class="work-preview__meta">
-                    <span class="work-preview__category">{item.category}</span>
-                    <span class="work-preview__title">{item.title}</span>
+                  <div class="work-preview__meta padding-2">
+                    {/* <span class="work-preview__category">{item.category}</span> */}
+                    <span class="work-preview__title">{post.data.title}</span>
                     <span class="work-preview__description">
-                      {item.description}
+                      {post.data.subtitle}
                     </span>
                   </div>
                 </a>
@@ -168,8 +132,8 @@ const selectedList = [
         </ul>
       </div>
 
-      <div class="notepad-notes tags">
-        <div>
+      <div class="column gap-6 notepad-notes tags">
+        <div class="column gap-2">
           <h2>My Notebook</h2>
           <p class="subsection_text">A collection of nerdy reminders</p>
         </div>
@@ -193,79 +157,12 @@ const selectedList = [
             ))
           }
         </ul>
-
-        <a href="https://www.youtube.com/watch?v=hbIZX6tE9JY">
-          https: www.youtube.com watch?v="hbIZX6tE9JY</a
-        >
-        <!-- <ul>
-          <article>
-            <div class="row">
-              <span class="sage">2026 CSS</span>
-              <h3>
-                <a href="/notes/ai-adoption-rollout"
-                  >AI Adoption Rollout at Jarilo</a
-                >
-              </h3>
-            </div>
-            <p>
-              How I introduced AI tooling across a team of designers,
-              developers, and account managers — and what the numbers looked
-              like after.
-            </p>
-          </article>
-        </ul>
-        <li class="stretched-link">
-          <article>
-            <div class="row">
-              <span class="dustyblue">Product</span>
-              <h3>
-                <a href="/notes/ai-adoption-rollout"
-                  >Internal Project Management Tool</a
-                >
-              </h3>
-            </div>
-            <p>
-              A lightweight internal product built to reduce coordination
-              overhead across 350+ concurrent projects.
-            </p>
-          </article>
-        </li>
-
-        <li class="stretched-link">
-          <article>
-            <div class="row">
-              <span class="sage">2026 CSS</span>
-              <h3>
-                <a href="/notes/ai-adoption-rollout"
-                  >AI Adoption Rollout at Jarilo</a
-                >
-              </h3>
-            </div>
-            <p>
-              How I introduced AI tooling across a team of designers,
-              developers, and account managers — and what the numbers looked
-              like after.
-            </p>
-          </article>
-        </li>
-        <li class="stretched-link">
-          <article>
-            <div class="row">
-              <span class="rosewood">Technical</span>
-              <h3>
-                <a href="/notes/ai-adoption-rollout"
-                  >Three.js Interactive Experience</a
-                >
-              </h3>
-            </div>
-            <p>
-              A client-facing 3D piece built in Three.js and Blender —
-              interactive, performant, shipped on deadline.
-            </p>
-          </article>
-        </li>
       </div>
-    </div> -->
+      <div class="column gap-6 lists-lists tags">
+        <div class="column gap-2">
+          <h2>My Lists</h2>
+          <p class="subsection_text">A collection of nerdy reminders</p>
+        </div>
 
         <ul class="listpad-list">
           {
@@ -315,14 +212,400 @@ const selectedList = [
             works and what doesn't.
           </p>
           <a href="/about" class="section-link">More about me →</a>
+          <a href="https://www.youtube.com/watch?v=hbIZX6tE9JY">
+            https: www.youtube.com watch?v="hbIZX6tE9JY</a
+          >
         </div>
       </div>
     </section>
+  </section>
+  <style>
+    .marquee-container {
+      container-type: inline-size;
+      container-name: marquee;
+    }
 
-    <!-- <Hero />
+    .marquee-grid {
+      display: grid;
+      /* background-color: rgba(255, 255, 0, 0.152); */
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+
+      @container marquee (min-width: 70ch) {
+        grid-template-columns: 2fr 1fr !important;
+        grid-template-rows: auto !important;
+        /* gap: var(--space-4); */
+        grid-template-areas:
+          "cards notes"
+          "list notes";
+      }
+    }
+
+    h3 span {
+      display: inline;
+
+      &.tag {
+        display: inline;
+        margin-left: var(--space-2);
+      }
+    }
+    .work-preview__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1) !important;
+    }
+    .padding-2 {
+      padding: var(--space-4);
+      padding-top: var(--space-3);
+    }
+
+    .tags ul {
+      /* background: aqua; */
+      display: flex;
+      flex-direction: column;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+      article {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .row {
+        display: flex;
+        gap: var(--space-2);
+      }
+
+      .work-preview__item {
+        outline: 2px solid var(--color-border);
+        /* outline: 2px solid lime; */
+        /* padding: 1rem; */
+        overflow: hidden;
+        background-color: var(--color-bg-raised);
+        border-radius: var(--radius-lg);
+
+        & img {
+          /* border-radius: 2rem; */
+          width: 100%;
+          aspect-ratio: 1;
+        }
+      }
+    }
+    .work-preview__list {
+      display: grid !important;
+      gap: var(--space-4);
+
+      /* border: 3px solid lime; */
+      /* background-color: rgba(255, 255, 0, 0.152); */
+
+      @container marquee (min-width: 80ch) {
+        grid-template-columns: 1fr 1fr !important;
+        grid-area: cards;
+      }
+    }
+
+    .work-preview__title {
+      font-size: 1.4rem !important;
+      font-family: var(--font-display);
+      font-weight: 400 !important;
+    }
+
+    .notepad-notes {
+      /* outline: 4px solid red;
+    background-color: rgba(255, 0, 187, 0.172); */
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      @container marquee (min-width: 70ch) {
+        grid-area: notes;
+      }
+    }
+    .listpad-list {
+      /* background-color: rgba(0, 255, 13, 0.172); */
+      @container marquee (min-width: 70ch) {
+        grid-area: list;
+      }
+    }
+
+    .subsection_text {
+      color: var(--color-text) !important;
+      font-size: var(--font-size-lg);
+    }
+  </style>
+</Main>
+
+<!-- const selectedWork = [
+  {
+    category: "Delivery",
+    title: "Rolling out AI-augmented delivery at Jarilo",
+    description:
+      "How a 41% output increase actually happened, process by process.",
+    href: "/work/ai-adoption-rollout",
+    thumbnail: "/images/image-1.webp",
+  },
+  {
+    category: "Product",
+    title: "An internal tool for tracking delivery health",
+    description: "Built to replace a spreadsheet nobody trusted anymore.",
+    href: "/work/internal-product",
+    thumbnail: "/images/image-2.webp",
+  },
+  {
+    category: "Three.js",
+    title: "How to Flip Paint in Three.ja",
+    description: "Figuring out fresnels x-mods controller.",
+    href: "/work/threejs-particle-study",
+    thumbnail: "/images/xmods-1.png",
+  },
+  {
+    category: "Three.js",
+    title: "Interactive particle study",
+    description: "A small WebGL piece exploring instanced geometry and scroll.",
+    href: "/work/threejs-particle-study",
+    thumbnail: "/images/darran-o-shea.jpg",
+  },
+]; -->
+
+<!-- 
+<Main title="Darran O'Shea">
+  <section>
+    <div class="hero-section">
+      <h1 class="text-3xl">Darran O'Shea</h1>
+      <div class="paragraphs">
+        <p>
+          Technical delivery lead at <mark>Jarilo Design</mark>. Self-taught,
+          hospitality-raised, still ships code.
+        </p>
+        <p>
+          Currently shipping 350+ projects a year and figuring out what
+          AI-augmented delivery actually looks like in practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        <span>350+</span>
+        <span>projects delivered annually</span>
+      </li>
+      <li>
+        <span>41%</span>
+        <span>increase in team output from AI adoption</span>
+      </li>
+      <li>
+        <span>20%</span>
+        <span>reduction in project timelines</span>
+      </li>
+      <li>
+        <span>90+</span>
+        <span>projects shipped as a developer before promotion</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-grid work tags">
+      <h2>Selected Work</h2>
+
+      <div class="section-right">
+        <ul>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="sage">Delivery</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >AI Adoption Rollout at Jarilo</a
+                  >
+                </h3>
+              </div>
+              <p>
+                How I introduced AI tooling across a team of designers,
+                developers, and account managers — and what the numbers looked
+                like after.
+              </p>
+            </article>
+          </li>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="dustyblue">Product</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Internal Project Management Tool</a
+                  >
+                </h3>
+              </div>
+              <p>
+                A lightweight internal product built to reduce coordination
+                overhead across 350+ concurrent projects.
+              </p>
+            </article>
+          </li>
+
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="rosewood">Technical</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Three.js Interactive Experience</a
+                  >
+                </h3>
+              </div>
+              <p>
+                A client-facing 3D piece built in Three.js and Blender —
+                interactive, performant, shipped on deadline.
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-grid">
+      <h2>About</h2>
+
+      <div class="section-right paragraphs">
+        <p>
+          I spent a decade running bars and restaurants before I taught myself
+          to code. I joined Jarilo Design as a web developer in 2022, shipped
+          over 90 projects, and was promoted to Technical Operations Lead in
+          2024. Now I run delivery across design, development, QA, account
+          management, and consultancy.
+        </p>
+        <p>
+          My background is unusual for this role and I think that's the point.
+          Managing a kitchen at volume taught me things about coordination and
+          calm under pressure that no bootcamp covers. The animation degree
+          didn't hurt either — I can get into the detail of a Three.js build or
+          a Blender scene without needing a handoff.
+        </p>
+        <p>
+          What I'm most interested in right now is what AI-augmented delivery
+          actually looks like when you take it seriously — not the hype, but the
+          tooling, the process changes, and the honest accounting of what works
+          and what doesn't.
+        </p>
+        <a href="/about" class="section-link">More about me →</a>
+      </div>
+    </div>
+  </section> -->
+
+<!-- <section>
+    <div class="section-grid notes">
+      <h2>Notes</h2>
+
+      <div class="section-right">
+        <p>
+          A public notebook — thoughts, hacks and lessons, primarily for myself.
+        </p>
+        <ul>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="sage">AI & Delivery</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >What 41% actually means: measuring AI adoption in a real
+                    agency</a
+                  >
+                </h3>
+              </div>
+              <p>
+                The methodology behind the number, and why output metrics miss
+                half the story.
+              </p>
+            </article>
+          </li>
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="dustyblue">Product</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Internal Project Management Tool</a
+                  >
+                </h3>
+              </div>
+              <p>
+                How triage, tempo, and boring systems beat heroics every time.
+              </p>
+            </article>
+          </li>
+
+          <li class="stretched-link">
+            <article>
+              <div class="row">
+                <span class="rosewood">Technical</span>
+                <h3>
+                  <a href="/notes/ai-adoption-rollout"
+                    >Three.js Interactive Experience</a
+                  >
+                </h3>
+              </div>
+              <p>
+                Not a productivity argument — a credibility and empathy one.
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section> -->
+
+<!-- <section>
+    <div class="section-grid notes tags">
+      <h2>Notes</h2>
+
+      <div class="section-right">
+        <ul>
+          <li>
+            <span class="clay">AI & Delivery</span>
+            <h3>
+              What 41% actually means: measuring AI adoption in a real agency
+            </h3>
+            <p>Not less work — different work, and a different bottleneck.</p>
+          </li>
+          <li>
+            <span class="mauve">Process</span>
+            <h3>Running 350+ projects a year without losing the thread</h3>
+            <p>
+              Hospitality operations and software delivery rhyme more than
+              people expect.
+            </p>
+          </li>
+          <li>
+            <span class="sand">Career</span>
+            <h3>On coming up through the wrong door</h3>
+            <p>
+              Hospitality to code to delivery — what the arc looks like from the
+              inside.
+            </p>
+          </li>
+          <li>
+            <span class="dustyblue">Technical</span>
+            <h3>Why I still write code as a delivery lead</h3>
+            <p>Walking through the instancing trick that made this fast.</p>
+          </li>
+        </ul>
+        <a href="/notes" class="section-link">All notes →</a>
+      </div>
+    </div>
+  </section> -->
+
+<!-- <Hero />
   <Me />
   <Skills /> -->
-    <!-- <Cards
+<!-- <Cards
     cards={[
       {
         to: "/about",
@@ -354,111 +637,38 @@ const selectedList = [
       },
     ]}
   /> -->
-  </section>
-  <style>
-    .tags ul {
-      /* background: aqua; */
+
+<!-- <style>
+  .tags ul {
+    /* background: aqua; */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+
+    li {
       display: flex;
       flex-direction: column;
-      gap: var(--space-6);
-
-      li {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2);
-      }
-      article {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2);
-      }
-
-      .row {
-        display: flex;
-        gap: var(--space-2);
-      }
-
-      .work-preview__item {
-        outline: 2px solid var(--color-border);
-        padding: 1rem;
-        background-color: var(--color-bg-raised);
-        border-radius: 2rem;
-
-        & img {
-          border-radius: 2rem;
-          width: 100%;
-          aspect-ratio: 1;
-        }
-      }
+      gap: var(--space-2);
     }
-    .work-preview__list {
-      display: grid !important;
-      gap: 1rem !important;
-
-      /* border: 3px solid lime; */
-      /* background-color: rgba(255, 255, 0, 0.152); */
-
-      @container marquee (min-width: 80ch) {
-        grid-template-columns: 1fr 1fr !important;
-        grid-area: cards;
-      }
-    }
-
-    .work-preview__meta {
-      /* background-color: lime; */
+    article {
       display: flex;
       flex-direction: column;
-      gap: var(--space-1) !important;
+      gap: var(--space-2);
     }
 
-    .work-preview__title {
-      font-size: 1.4rem !important;
-      font-family: var(--font-display);
-      font-weight: 400 !important;
-    }
-
-    .marquee-grid {
-      display: grid !important;
-      /* border: 3px solid cyan;
-    background-color: rgba(255, 255, 0, 0.152); */
-      gap: 2rem;
-      grid-template-columns: 1fr;
-
-      @container marquee (min-width: 70ch) {
-        grid-template-columns: 2fr 1fr !important;
-        grid-template-rows: auto !important;
-        /* gap: var(--space-4); */
-        grid-template-areas:
-          "cards notes"
-          "list notes";
-      }
-    }
-
-    .notepad-notes {
-      /* outline: 4px solid red;
-    background-color: rgba(255, 0, 187, 0.172); */
+    .row {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      @container marquee (min-width: 70ch) {
-        grid-area: notes;
-      }
+      gap: var(--space-2);
     }
-    .listpad-list {
-      /* background-color: rgba(0, 255, 13, 0.172); */
-      @container marquee (min-width: 70ch) {
-        grid-area: list;
-      }
+    span {
+      /* background-color: lemonchiffon; */
+      display: block;
+      flex: 0;
+      width: fit-content;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0.1lh 0.2lh;
+      border-radius: 4px;
     }
-
-    .marquee-container {
-      container-type: inline-size;
-      container-name: marquee;
-    }
-
-    .subsection_text {
-      color: var(--color-text) !important;
-      font-size: var(--font-size-lg);
-    }
-  </style>
-</Main>
+  }
+</style> -->

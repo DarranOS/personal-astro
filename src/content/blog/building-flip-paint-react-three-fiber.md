@@ -1,11 +1,9 @@
 ---
-layout: ../layouts/Blog.astro
-title: "Title 1"
-subtitle: "Title 2 Title 2 Title 2"
-# poster: "/images/darran-o-shea.jpg"
+title: "How to Flip Paint in Three.JS"
+subtitle: "Figuring out fresnels x-mods controller."
+tags: ["astro", "Three.JS"]
+poster: "./images/xmods-1.png"
 ---
-
-# Building Flip Paint in React Three Fiber: A Journey into `onBeforeCompile`
 
 When I started building a configurable 3D product viewer, I thought
 adding a flip paint (or chameleon paint) option would be relatively
