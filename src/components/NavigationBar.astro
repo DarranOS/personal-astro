@@ -3,39 +3,136 @@ import ThemeToggler from "./ThemeToggler.astro";
 ---
 
 <nav>
+  <div>
+    <label for="toggle-menu"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width="30"
+        height="30"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      </svg>
+    </label>
+
+    <input type="checkbox" id="toggle-menu" class="visually-hidden" />
+  </div>
   <ul>
     <li><a href="/">Home</a></li>
-    <!-- <li><a href="/about">About</a></li> -->
-    <!-- <li><a href="/philosophies">Philosophies</a></li> -->
+    <li><a href="/about">About</a></li>
+    <li><a href="/philosophies">Philosophies</a></li>
   </ul>
   <ThemeToggler />
 </nav>
 
 <style>
   nav {
-    display: flex;
+    container-type: inline-size;
+    container-name: navbar;
+
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
     justify-content: space-between;
+    /* background-color: lime; */
+    align-items: center;
+    grid-template-areas: "menu-toggle menu mode-toggle";
+    /* position: relative; */
+
+    &:has(input:checked)::before {
+      content: "";
+      background: var(--color-bg);
+      height: 100vh;
+      width: 100vw;
+      inset: 0;
+      z-index: 1;
+      position: fixed;
+    }
+    &:has(input:checked) {
+      grid-template-columns: 30px 1fr 30px;
+      /* background-color: red; */
+      grid-template-areas:
+        "menu-toggle . mode-toggle"
+        "menu menu menu";
+
+      ul {
+        display: flex;
+        opacity: 1;
+        /* height: 100vh; */
+        z-index: 1000;
+        flex-direction: column;
+        padding: 10px;
+        align-items: start;
+
+        /* position: fixed; */
+      }
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  label {
+    display: block;
+    height: 100%;
+    /* background-color: salmon; */
+    padding: 2px;
+    width: 34px;
+    cursor: pointer;
+
+    & svg {
+      stroke: var(--color-text);
+    }
+  }
+  div:has(label) {
+    /* background-color: cyan; */
+    height: 100%;
+    align-content: center;
+    grid-area: menu-toggle;
+    z-index: 1;
   }
 
   ul {
-    list-style: none;
     display: flex;
+    /* background-color: rgba(0, 255, 0, 0.3); */
+    justify-content: center;
+    opacity: 0;
+    list-style: none;
     gap: 1rem;
     margin: 0;
     padding: 0;
+    grid-area: menu;
+    font-size: 1.2rem;
+
+    @container navbar (min-width: 70ch) {
+      opacity: 1;
+    }
   }
 
   a {
-    color: var(--grey-400);
+    color: var(--color-text);
     text-decoration: none;
   }
 
   a.active {
     text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-text-muted);
   }
 
   a:hover {
     color: var(--grey-900);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    left: 5vw;
   }
 </style>
 

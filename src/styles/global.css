@@ -76,6 +76,12 @@ html.dark {
   --grey-900: #fafafa;
 } */
 
+header {
+  /* background: yellow; */
+  margin: 0 auto;
+  max-width: max(30px, 80rem);
+  padding: 20px;
+}
 mark {
   background-color: unset;
   color: var(--grey-900);
@@ -83,7 +89,7 @@ mark {
 }
 
 body {
-  border: 2px dashed firebrick;
+  /* border: 2px dashed firebrick; */
   background-color: var(--color-bg);
 }
 

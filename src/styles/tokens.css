@@ -1,8 +1,6 @@
 :root {
   /* ---- Base surface & text ---- */
-  --color-bg: oklab(
-    93.48100000000001% 0.00498 0.00981 / 0.958
-  ); /* warm off-white */
+  --color-bg: oklab(93.48100000000001% 0.00498 0.00981); /* warm off-white */
   --color-bg-raised: #f2ece3; /* slightly deeper, for cards/rows */
   --color-text: #2a2521; /* dark, not black */
   --color-text-muted: #6b6258; /* secondary copy, labels */
